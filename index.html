@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>μStudio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>μStudio Arranger</h1>
+
+        <!-- File controls -->
+        <input type="file" id="fileInput" accept=".json" onchange="handleImport(this.files[0])">
+        <button onclick="handleExport()">Export .json</button>
+
+        <!-- Player controls -->
+        <div style="margin: 20px 0;">
+            <button onclick="playSequence()">Play</button>
+            <button onclick="stopSequence()">Stop</button>
+            <input type="checkbox" id="loopCheckbox"> Loop
+        </div>
+
+        <!-- Note editor -->
+        <div class="note-editor">
+            <div style="margin-bottom: 15px;">
+                <label>New Note: </label>
+                <input type="number" id="newTime" placeholder="Time (s)" step="0.1" value="0">
+                <input type="number" id="newFreq" placeholder="Frequency (Hz)" step="5" min="20" value="440">
+                <input type="number" id="newDuration" placeholder="Duration (s)" step="0.1" value="0.25">
+                <button onclick="handleAddNoteForm()">+ Add</button>
+            </div>
+
+            <table id="noteTable">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Frequency</th>
+                        <th>Duration</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
